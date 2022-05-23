@@ -1,16 +1,17 @@
-<button onclick="getUsers()">getUsers</button>
+<input type="text" id="query" placeholder="SELECT * FROM table" />
+<button onclick="useSQL()">Usar SQL</button>
 
 <script src="./js/jsSql.js"></script>
 <script>
-    const getUsers = () => {
-        const jsSql = new JsSQL(usersData)
+    const useSQL = () => {
+        const jsSql = new JsSQL(myCallBackFunction)
 
-        const query = 'SELECT * FROM unidade WHERE ativo_unidade = 1'
+        const query = document.getElementById('query').value
 
         jsSql.makeSelection(query)
     }
 
-    function usersData (response) {
+    function myCallBackFunction (response) {
         console.log(response)
 
         const data = response.data
